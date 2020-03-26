@@ -4,22 +4,19 @@ class Application {
     /*реализующий обработку нажатия на кнопку, 
     получение введенных данных и отображение результатов.*/
     constructor() {
-        this.initialAmountInput = document.getElementById('initialAmount');
-        this.monthlyRefillInput = document.getElementById('monthlyRefill');
-        this.periodInput = document.getElementById('period');
-        this.currencyInput = document.getElementById('currency');
-
-        const self = this;
-        document.querySelector('[name=submit]').addEventListener('click', function () {
-            self.handleButtonClick();
+        document.querySelector('[name=submit]').addEventListener('click', this.handleButtonClick);
+        document.querySelector('.calculatorBlock').addEventListener('keypress', (event) => {
+            if(event.key === 'Enter'){
+                this.handleButtonClick();
+            }
         });
     }
 
     handleButtonClick() {
-        const initialAmount = Number(this.initialAmountInput.value);
-        const monthlyRefill = Number(this.monthlyRefillInput.value);
-        const period = Number(this.periodInput.value);
-        const currency = this.currencyInput.value;
+        const initialAmount = document.getElementById('initialAmount').value;
+        const monthlyRefill = document.getElementById('monthlyRefill').value;
+        const period = document.getElementById('period').value;
+        const currency = document.getElementById('currency').value;
         const container = document.querySelector('table');
 
         const clientQuery = new Deposit(initialAmount, monthlyRefill, period, currency);
@@ -191,18 +188,24 @@ class Deposit {
     }
     findError() {
         let errorLog = '';
-        if (this.initialAmount < 0 || isNaN(this.initialAmount)) {
+        if(!this.initialAmount || !this.monthlyRefill || !this.period){
+            errorLog += 'Все поля должны быть заполнены.\n';
+        }
+        if (this.initialAmount < 0 || isNaN(+this.initialAmount)) {
             errorLog += 'Начальная сумма должна быть не отрицательным числом.\n';
         }
-        if (this.monthlyRefill < 0 || isNaN(this.monthlyRefill)) {
+        if (this.monthlyRefill < 0 || isNaN(+this.monthlyRefill)) {
             errorLog += 'Сумма ежемесячного пополнения должна быть не отрицательным числом.\n';
         }
-        if (this.period < 0 || Math.trunc(this.period) != this.period || isNaN(this.period)) {
-            errorLog += 'Срок вклада должна быть положительным целым числомю\n';
+        if (this.period < 0 || Math.trunc(this.period) != this.period || isNaN(+this.period)) {
+            errorLog += 'Срок вклада должна быть положительным целым числом.\n';
         }
         if (!(this.currency !== 'RUB' ^ this.currency !== 'USD')) {
             errorLog += 'Поле "валюта вклада" содержит ошибку ввода.';
         }
+        this.initialAmount = +this.initialAmount;
+        this.monthlyRefill = +this.monthlyRefill;
+        this.period = +this.period;
         return errorLog;
     }
 }
