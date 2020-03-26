@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <main>
+        <h1>Подбор оптимального вклада</h1>
+        <div class="calculatorBlock">
+            <p><label for="initialAmount">Начальная сумма вклада</label>
+                <input type="text" name="initialAmount" id="initialAmount" /></p>
+            <p><label for="monthlyRefill">Сумма ежемесячного пополнения</label>
+                <input type="text" name="monthlyRefill" id="monthlyRefill" /></p>
+            <p><label for="period">Срок вклада</label>
+                <input type="text" name="period" id="period" /></p>
+            <p><label for="currency">Валюта вклада</label>
+                <input type="text" name="currency" id="currency" placeholder="USD or RUB" /></p>
+            <button type="submit" name="submit">Подобрать</button>
+        </div>
+        <div class="suggestion">
+            <table></table>
+        </div>
+    </main>
+    <script src="calculate.js"></script>
+</body>
+
+</html>

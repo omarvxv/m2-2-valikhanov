@@ -1,0 +1,96 @@
+html,
+body,
+div,
+h1,
+p,
+table,
+tbody,
+tr,
+th,
+td{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+body{
+    font-family: Roboto, sans-serif;
+}
+main{
+    margin: 0 auto;
+    text-align: center;
+}
+h1{
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 20px auto;
+}
+.calculatorBlock{
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border: 1px solid #7797a2;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.calculatorBlock p{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+input{
+    border-radius: 3px;
+}
+button{
+    background: #204051;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 16px;
+}
+.suggestion{
+    width: 48%;
+    margin: 20px auto 0;
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+	border-spacing: 0;
+    width: 100%;
+}
+.suggestion tr{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border: 1px solid #5d878e;
+    border-bottom: none;
+    border-top: none;
+}
+.suggestion tr th{
+    padding: 10px 0;
+    font-weight: 700;
+    font-size: 17px;
+    width: 25%;
+}
+.suggestion tr td{
+    padding: 5px 0;
+    align-items: center;
+    width: 25%;
+    font-size: 15px;
+}
+.suggestion tr:first-child{
+    background: #cae8d5;
+    border-top: 1px solid #5d878e;
+    border-bottom: 1px solid #5d878e;
+}
+.suggestion tr:last-child{
+    border-bottom: 1px solid #5d878e;
+}
