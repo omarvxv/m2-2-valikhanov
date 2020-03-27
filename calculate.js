@@ -73,7 +73,7 @@ class Calculator {
     calculateFinalAmount(suggestion, clientData) {
         let finalAmount = clientData.initialAmount;
         for (let i = 0; i < clientData.period; i++) {
-            if (i > 0 && i < clientData.period) {
+            if (i < clientData.period-1) {
                 finalAmount += finalAmount * suggestion.incomeType / 100 / 12 + clientData.monthlyRefill;
             } else {
                 finalAmount += finalAmount * suggestion.incomeType / 100 / 12;
@@ -118,9 +118,7 @@ class BankProduct {
                 return suggestion.canDeposit === true;
             });
         } else {
-            return data.filter(suggestion => {
-                return suggestion.canDeposit === false;
-            });
+            return data;
         }
     }
     filterForMinAmount(data, product) {
